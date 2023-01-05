@@ -2,6 +2,8 @@
 
 Firebase JWT decoding utility for Rust.
 
+<img width="1027" alt="Screen Shot 2023-01-05 at 11 03 13 PM" src="https://user-images.githubusercontent.com/7658554/210826111-2ca13e44-7ea0-4b14-8535-60564ee10c7c.png">
+
 ## What is this?
 
 If you have a Rust server and plan to have API for your verifying your firebase users' [client token](https://firebase.google.com/docs/auth/admin/verify-id-tokens#retrieve_id_tokens_on_clients), then it's just for you!
