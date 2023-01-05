@@ -1,20 +1,16 @@
 [package]
-name = "rust_starter"
+name = "firebase_jwt_rs"
 version = "0.1.0"
 edition = "2021"
+description = "Firebase utils for JWT client token decoding"
+readme = "README.md"
+repository = "https://github.com/antonybudianto/firebase-rs"
+license = "MIT"
+authors = ["Antony Budianto <antonybudianto@gmail.com>"]
+keywords = ["firebase", "jwt", "api", "decoding"]
 
 [dependencies]
+jsonwebtoken = "8"
 serde_json = "1.0"
-futures = "0.3"
-
-  [dependencies.tokio]
-  version = "1"
-  features = [ "full" ]
-
-  [dependencies.serde]
-  version = "1.0"
-  features = [ "derive" ]
-
-  [dependencies.reqwest]
-  version = "0.11.0"
-  features = [ "json" ]
+serde = { version = "1.0", features = ["derive"] }
+reqwest = { version = "0.11.13", features = ["json"] }

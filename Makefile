@@ -1,5 +1,5 @@
 build-native:
-	rustc src/main.rs
+	rustc src/lib.rs
 
 build:
 	cargo build
@@ -12,3 +12,9 @@ run: # similar to ./target/debug/hello_rust
 
 run-prod: # similar to ./target/release/hello_rust
 	cargo run --release
+
+publish-dry:
+	cargo publish --dry-run
+
+publish:
+	cargo publish
