@@ -8,6 +8,11 @@ repository = "https://github.com/antonybudianto/firebase-rs"
 license = "MIT"
 authors = ["Antony Budianto <antonybudianto@gmail.com>"]
 keywords = ["firebase", "jwt", "api", "decoding"]
+exclude = [
+  ".env.example",
+  ".prettierrc.json",
+  "Makefile"
+]
 
 [dependencies]
 jsonwebtoken = "8"
