@@ -14,14 +14,16 @@ https://firebase.google.com/docs/auth/admin/verify-id-tokens#verify_id_tokens_us
 
 ## Flow
 
-1. In your frontend, you can get your uid by using Firebase Client SDK.
+1. In your frontend, you can get your uid + client-token by using Firebase Client SDK.
 
     Sample:
     https://firebase.google.com/docs/auth/admin/verify-id-tokens#retrieve_id_tokens_on_clients
 
-2. Then your frontend can hit the backend Rust API, and send hover the header/POST body (up to you)
+2. Then your frontend can hit the backend Rust API and send over uid+client-token to the HTTP Header/POST body (up to you), which will be passed to `verify_token(uid, client_token)` util.
 
-3. Backend Rust will verify and send back the JWL claim response (including extracted user's data) back as json
+3. Add `FIREBASE_PROJECT_ID` environment variable to your backend on local and production server
+
+4. Backend Rust will verify and send back the JWL claim response (including extracted user's data) back as json
 
 ## How to use
 

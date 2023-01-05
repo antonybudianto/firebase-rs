@@ -6,7 +6,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::{Map, Value};
 
 #[derive(Debug, Serialize, Deserialize)]
-struct FirebaseClaims {
+pub struct FirebaseClaims {
     sign_in_provider: String,
 }
 #[derive(Debug, Serialize, Deserialize)]

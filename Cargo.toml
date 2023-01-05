@@ -1,6 +1,6 @@
 [package]
 name = "firebase_jwt_rs"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Firebase utils for JWT client token decoding"
 readme = "README.md"
