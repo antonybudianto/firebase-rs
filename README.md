@@ -23,7 +23,7 @@ https://firebase.google.com/docs/auth/admin/verify-id-tokens#verify_id_tokens_us
 
 3. Add `FIREBASE_PROJECT_ID` environment variable to your backend on local and production server
 
-4. Backend Rust will verify and send back the JWL claim response (including extracted user's data) back as json
+4. Backend Rust will verify and send back the JWT claim response (including extracted user's data, and verified user_id) back as json
 
 ## How to use
 
@@ -35,7 +35,7 @@ use std::error::Error;
 let uid = "your-user-uid";
 let client_token = "your-client-token";
 
-const result: Result<TokenData<Claims>, Box<dyn Error>> = verify_token(uid, client_token);
+let result: Result<TokenData<Claims>, Box<dyn Error>> = verify_token(uid, client_token).await;
 
 match result {
   Ok(res: TokenData<Claims>) => {

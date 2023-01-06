@@ -32,6 +32,35 @@ async fn get_pbkey() -> Result<Map<String, Value>, Box<dyn Error>> {
     Ok(res)
 }
 
+/// Verify Firebase client token by passing the uid and client token.
+///
+/// Prerequisites:
+/// - Please add env variable "FIREBASE_PROJECT_ID=your-firebase-project-id"
+///
+/// # Examples
+///
+/// ```
+/// use firebase_jwt_rs::*;
+///
+///
+/// async fn fetch_token() {
+///     let uid = "your-uid";
+///     let client_token = "your-client-token";
+///     // Get your uid and client token from official Firebase Client SDK:
+///     // https://firebase.google.com/docs/auth/admin/verify-id-tokens#retrieve_id_tokens_on_clients
+///     let result = verify_token(uid, client_token).await;
+///
+///     match result {
+///         Ok(res) => {
+///             let text: String = serde_json::to_string(&res.claims).unwrap();
+///             println!("result:{text}");
+///         }
+///         Err(e) => {
+///             println!("err:{e}");
+///         }
+///     }
+/// }
+/// ```
 pub async fn verify_token(
     uid: &str,
     client_token: &str,
@@ -72,4 +101,33 @@ pub async fn verify_token(
     };
 
     return token_data;
+}
+
+#[cfg(test)]
+mod tests {
+    use std::error::Error;
+
+    use jsonwebtoken::TokenData;
+
+    use crate::{verify_token, Claims};
+
+    #[tokio::test]
+    async fn e2e_fetch() {
+        let uid = "";
+        let client_token = "";
+        let result: Result<TokenData<Claims>, Box<dyn Error>> =
+            verify_token(uid, client_token).await;
+        let mut success = false;
+        match result {
+            Ok(res) => {
+                let text: String = serde_json::to_string(&res.claims).unwrap();
+                success = true;
+                println!("result:{text}");
+            }
+            Err(e) => {
+                println!("err:{e}");
+            }
+        }
+        assert_eq!(success, false)
+    }
 }
